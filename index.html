@@ -11,7 +11,7 @@
       font-family: 'Poppins', sans-serif;
       background: url('https://i.imgur.com/9G3gG6H.jpg') no-repeat center center fixed;
       background-size: cover;
-      overflow: hidden;
+      overflow-x: hidden;
       color: white;
     }
 
@@ -136,8 +136,8 @@
       z-index: 10;
       background: rgba(0, 0, 0, 0.6);
       border-radius: 50%;
-      padding: 15px;
-      font-size: 24px;
+      padding: 20px;
+      font-size: 35px;
       cursor: pointer;
     }
 
@@ -145,15 +145,47 @@
       margin-top: 15px;
       font-weight: bold;
     }
+
+    .ad-box {
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      z-index: 10;
+    }
   </style>
 </head>
 <body>
 
-<!-- Fireworks -->
 <canvas id="fireworksCanvas"></canvas>
 
-<!-- Audio Toggle -->
 <div class="audio-control" onclick="toggleMute()" id="audioToggle">🔇</div>
+
+<!-- 🌙 2 Ads at Top -->
+<div class="ad-box">
+  <script type="text/javascript">
+    atOptions = {
+      'key': '6e387aba1077eab709d2d4e38a5f02e4',
+      'format': 'iframe',
+      'height': 60,
+      'width': 468,
+      'params': {}
+    };
+  </script>
+  <script type="text/javascript" src="//www.highperformanceformat.com/6e387aba1077eab709d2d4e38a5f02e4/invoke.js"></script>
+</div>
+
+<div class="ad-box">
+  <script type="text/javascript">
+    atOptions = {
+      'key': '431fe09041d736fee96b9802f252a42a',
+      'format': 'iframe',
+      'height': 50,
+      'width': 320,
+      'params': {}
+    };
+  </script>
+  <script type="text/javascript" src="//www.highperformanceformat.com/431fe09041d736fee96b9802f252a42a/invoke.js"></script>
+</div>
 
 <!-- Welcome Popup -->
 <div class="popup" id="startPopup">
@@ -178,9 +210,35 @@
     <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="whatsapp icon"/>
     WhatsApp पर शेयर करें
   </button>
-  </<footer>MADE BY FARMAN KHAN</footer>
 </div>
-<!-- Music -->
+
+<!-- 🌙 2 Ads at Bottom -->
+<div class="ad-box">
+  <script type="text/javascript">
+    atOptions = {
+      'key': '6e387aba1077eab709d2d4e38a5f02e4',
+      'format': 'iframe',
+      'height': 60,
+      'width': 468,
+      'params': {}
+    };
+  </script>
+  <script type="text/javascript" src="//www.highperformanceformat.com/6e387aba1077eab709d2d4e38a5f02e4/invoke.js"></script>
+</div>
+
+<div class="ad-box">
+  <script type="text/javascript">
+    atOptions = {
+      'key': '431fe09041d736fee96b9802f252a42a',
+      'format': 'iframe',
+      'height': 50,
+      'width': 320,
+      'params': {}
+    };
+  </script>
+  <script type="text/javascript" src="//www.highperformanceformat.com/431fe09041d736fee96b9802f252a42a/invoke.js"></script>
+</div>
+
 <audio id="bgMusic" src="song.mp3" muted loop></audio>
 
 <script>
