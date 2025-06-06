@@ -29,12 +29,13 @@
       z-index: 2;
       max-width: 400px;
       margin: 50px auto;
-      background: rgba(0, 0, 0, 0.75);
+      background: rgba(0, 0, 0, 0.35);
       border-radius: 20px;
       padding: 20px;
       text-align: center;
       box-shadow: 0 0 30px #00ffc3;
       border: 2px solid #ffd700;
+      backdrop-filter: blur(6px);
     }
 
     img {
@@ -137,7 +138,7 @@
       background: rgba(0, 0, 0, 0.6);
       border-radius: 50%;
       padding: 20px;
-      font-size: 35px;
+      font-size: 30px;
       cursor: pointer;
     }
 
@@ -157,10 +158,9 @@
 <body>
 
 <canvas id="fireworksCanvas"></canvas>
-
 <div class="audio-control" onclick="toggleMute()" id="audioToggle">🔇</div>
 
-<!-- 🌙 2 Ads at Top -->
+<!-- 🟢 2 Ads at Top -->
 <div class="ad-box">
   <script type="text/javascript">
     atOptions = {
@@ -187,14 +187,14 @@
   <script type="text/javascript" src="//www.highperformanceformat.com/431fe09041d736fee96b9802f252a42a/invoke.js"></script>
 </div>
 
-<!-- Welcome Popup -->
+<!-- 🎉 Welcome Popup -->
 <div class="popup" id="startPopup">
   <h1>🌙 Eid Mubarak</h1>
   <p>Apna naam likh kar Eid Mubarak share karein</p>
   <button onclick="closePopup()">Thanks</button>
 </div>
 
-<!-- Greeting Card -->
+<!-- 🧧 Greeting Card -->
 <div class="container">
   <img src="eid.gif" alt="Eid-ul-Adha" />
   <div class="greeting">Eid-ul-Adha Mubarak</div>
@@ -212,7 +212,7 @@
   </button>
 </div>
 
-<!-- 🌙 2 Ads at Bottom -->
+<!-- 🟢 2 Ads at Bottom -->
 <div class="ad-box">
   <script type="text/javascript">
     atOptions = {
@@ -239,6 +239,7 @@
   <script type="text/javascript" src="//www.highperformanceformat.com/431fe09041d736fee96b9802f252a42a/invoke.js"></script>
 </div>
 
+<!-- 🔊 Music -->
 <audio id="bgMusic" src="song.mp3" muted loop></audio>
 
 <script>
@@ -275,7 +276,6 @@
     audioIcon.textContent = "🔊";
   }
 
-  // Fireworks
   const canvas = document.getElementById('fireworksCanvas');
   const ctx = canvas.getContext('2d');
   let w = canvas.width = window.innerWidth;
