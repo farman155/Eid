@@ -28,13 +28,14 @@
       position: relative;
       z-index: 2;
       max-width: 400px;
-      margin: 50px auto;
-      background: rgba(0, 0, 0, 0.75);
+      margin: 30px auto;
+      background: rgba(0, 0, 0, 0.35);
       border-radius: 20px;
       padding: 20px;
       text-align: center;
       box-shadow: 0 0 30px #00ffc3;
       border: 2px solid #ffd700;
+      backdrop-filter: blur(6px);
     }
 
     img {
@@ -129,80 +130,75 @@
       color: #000;
     }
 
-.audio-control {
-  position: fixed;
-  top: 450px;
-  left: 90%;
-  transform: translateX(-50%);
-  z-index: 1000;
-  background: rgba(0, 0, 0, 0.6);
-  border-radius: 50%;
-  padding: 20px;
-  font-size: 30px;
-  cursor: pointer;
-  color: white;
-  box-shadow: 0 0 10px #ffd700;
-}
+    .audio-control {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 50%;
+      padding: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      color: white;
+      box-shadow: 0 0 10px #ffd700;
+    }
 
     #wishMessage {
       margin-top: 15px;
       font-weight: bold;
     }
 
-    .ad-horizontal {
+    .ad-box {
       display: flex;
       justify-content: center;
-      margin: 20px auto;
-      z-index: 2;
+      padding: 10px 0;
+      z-index: 10;
     }
 
-    .ad-banner-bottom {
-      position: fixed;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 9999;
-      background: rgba(0, 0, 0, 0.8);
-      border-top: 2px solid #ffd700;
-      padding: 5px;
-      border-radius: 10px 10px 0 0;
+    /* ✅ Mobile responsiveness */
+    @media (max-width: 400px) {
+      .container {
+        margin: 20px 10px;
+        padding: 15px;
+      }
+      .greeting {
+        font-size: 1.7em;
+      }
+      .button-main {
+        width: 100%;
+        font-size: 0.95em;
+        padding: 12px;
+      }
+      input {
+        width: 100%;
+      }
+      .popup h1 {
+        font-size: 2.5em;
+      }
+      .popup p {
+        font-size: 1em;
+      }
+      .popup button {
+        font-size: 1em;
+        padding: 10px 20px;
+      }
+      .audio-control {
+        top: 15px;
+        padding: 12px;
+        font-size: 20px;
+      }
     }
   </style>
 </head>
 <body>
 
 <canvas id="fireworksCanvas"></canvas>
-
 <div class="audio-control" onclick="toggleMute()" id="audioToggle">🔇</div>
 
-<!-- Popup -->
-<div class="popup" id="startPopup">
-  <h1>🌙 Eid Mubarak</h1>
-  <p>Apna naam likh kar Eid Mubarak share karein</p>
-  <button onclick="closePopup()">Thanks</button>
-</div>
-
-<!-- Greeting Card -->
-<div class="container">
-  <img src="eid.gif" alt="Eid-ul-Adha" />
-  <div class="greeting">Eid-ul-Adha Mubarak</div>
-
-  <input type="text" id="nameInput" placeholder="Enter Your Name" />
-  <div class="shayari" id="wishMessage">
-    चाँद से रौशन हो ये त्योहार,<br>
-    आपके जीवन में भर दे खुशियों की बहार,<br>
-    ईद-उल-अज़हा की हार्दिक शुभकामनाएं! 🌙✨
-  </div>
-
-  <button class="button-main" onclick="shareOnWhatsApp()">
-    <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="whatsapp icon"/>
-    WhatsApp पर शेयर करें
-  </button>
-  </<footer>MADE BY FARMAN KHAN</footer>
-</div>
-
-<!-- Horizontal Ad (below greeting) -->
-<div class="ad-horizontal">
+<!-- Ad at Top -->
+<div class="ad-box">
   <script type="text/javascript">
     atOptions = {
       'key': '6e387aba1077eab709d2d4e38a5f02e4',
@@ -215,8 +211,29 @@
   <script type="text/javascript" src="//www.highperformanceformat.com/6e387aba1077eab709d2d4e38a5f02e4/invoke.js"></script>
 </div>
 
-<!-- Bottom Banner Ad -->
-<div class="ad-banner-bottom">
+<!-- Popup -->
+<div class="popup" id="startPopup">
+  <h1>🌙 Eid Mubarak</h1>
+  <p>Apna naam likh kar Eid Mubarak share karein</p>
+  <button onclick="closePopup()">Thanks</button>
+</div>
+
+<!-- Greeting -->
+<div class="container">
+  <img src="eid.gif" alt="Eid-ul-Adha" />
+  <div class="greeting">Eid-ul-Adha Mubarak</div>
+  <input type="text" id="nameInput" placeholder="Enter Your Name" />
+  <div class="shayari" id="wishMessage">
+    खुशी का हो आलम,<br>और बरसें रहमतें! 🌙✨
+  </div>
+  <button class="button-main" onclick="shareOnWhatsApp()">
+    <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="whatsapp icon"/>
+    WhatsApp पर शेयर करें
+  </button>
+</div>
+
+<!-- Ad at Bottom -->
+<div class="ad-box">
   <script type="text/javascript">
     atOptions = {
       'key': '431fe09041d736fee96b9802f252a42a',
@@ -229,7 +246,6 @@
   <script type="text/javascript" src="//www.highperformanceformat.com/431fe09041d736fee96b9802f252a42a/invoke.js"></script>
 </div>
 
-<!-- Music -->
 <audio id="bgMusic" src="song.mp3" muted loop></audio>
 
 <script>
@@ -251,22 +267,28 @@
 
   function shareOnWhatsApp() {
     const name = document.getElementById("nameInput").value.trim() || "आपके दोस्त";
-    const message = `🌙 Eid-ul-Adha Mubarak! 🌟\n\nचाँद से रौशन हो ये त्योहार,\nआपके जीवन में भर दे खुशियों की बहार,\nईद-उल-अज़हा की मुबारकबाद!\n\n🎉 शुभकामनाएं: ${name}\n\n🎁 ${window.location.href}`;
+    const baseUrl = window.location.origin + window.location.pathname;
+    const shareUrl = `${baseUrl}?name=${encodeURIComponent(name)}`;
+    const message = `🌙 Eid-ul-Adha Mubarak! 🌟\n\nखुशी का हो आलम,\nऔर बरसें रहमतें!\n\n🎉 शुभकामनाएं: ${name}\n\n🎁 ${shareUrl}`;
 
-    document.getElementById("wishMessage").innerHTML =
-      `चाँद से रौशन हो ये त्योहार,<br>
-      आपके जीवन में भर दे खुशियों की बहार,<br>
-      ईद-उल-अज़हा की हार्दिक शुभकामनाएं! 🌙✨<br><strong>- ${name}</strong>`;
+    audio.pause();
+    audio.muted = true;
+    audioIcon.textContent = "🔇";
 
-    const url = "https://api.whatsapp.com/send?text=" + encodeURIComponent(message);
-    window.open(url, '_blank');
-
-    audio.play();
-    audio.muted = false;
-    audioIcon.textContent = "🔊";
+    window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(message), '_blank');
   }
 
-  // Fireworks animation
+  // Load sender name from link (if available)
+  window.onload = function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const senderName = urlParams.get('name');
+    if (senderName) {
+      document.getElementById("wishMessage").innerHTML =
+        `खुशी का हो आलम,<br>और बरसें रहमतें! 🌙✨<br><strong>- ${senderName}</strong>`;
+    }
+  };
+
+  // Fireworks
   const canvas = document.getElementById('fireworksCanvas');
   const ctx = canvas.getContext('2d');
   let w = canvas.width = window.innerWidth;
@@ -277,11 +299,9 @@
   });
 
   let particles = [];
-
   function random(min, max) {
     return Math.random() * (max - min) + min;
   }
-
   function createFirework() {
     const count = 80;
     const angle = (Math.PI * 2) / count;
@@ -301,7 +321,6 @@
       });
     }
   }
-
   function animate() {
     ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
     ctx.fillRect(0, 0, w, h);
@@ -323,4 +342,4 @@
 </script>
 
 </body>
-</html>
+</html
