@@ -28,14 +28,13 @@
       position: relative;
       z-index: 2;
       max-width: 400px;
-      margin: 20px auto;
-      background: rgba(0, 0, 0, 0.35);
+      margin: 50px auto;
+      background: rgba(0, 0, 0, 0.75);
       border-radius: 20px;
       padding: 20px;
       text-align: center;
       box-shadow: 0 0 30px #00ffc3;
       border: 2px solid #ffd700;
-      backdrop-filter: blur(6px);
     }
 
     img {
@@ -137,8 +136,8 @@
       z-index: 10;
       background: rgba(0, 0, 0, 0.6);
       border-radius: 50%;
-      padding: 20px;
-      font-size: 30px;
+      padding: 15px;
+      font-size: 24px;
       cursor: pointer;
     }
 
@@ -147,41 +146,40 @@
       font-weight: bold;
     }
 
-    .ad-box {
+    .ad-horizontal {
       display: flex;
       justify-content: center;
-      padding: 10px;
-      z-index: 10;
+      margin: 20px auto;
+      z-index: 2;
+    }
+
+    .ad-banner-bottom {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.8);
+      border-top: 2px solid #ffd700;
+      padding: 5px;
+      border-radius: 10px 10px 0 0;
     }
   </style>
 </head>
 <body>
 
 <canvas id="fireworksCanvas"></canvas>
+
 <div class="audio-control" onclick="toggleMute()" id="audioToggle">🔇</div>
 
-<!-- ✅ One Ad at Top -->
-<div class="ad-box">
-  <script type="text/javascript">
-    atOptions = {
-      'key': '6e387aba1077eab709d2d4e38a5f02e4',
-      'format': 'iframe',
-      'height': 60,
-      'width': 468,
-      'params': {}
-    };
-  </script>
-  <script type="text/javascript" src="//www.highperformanceformat.com/6e387aba1077eab709d2d4e38a5f02e4/invoke.js"></script>
-</div>
-
-<!-- 🎉 Popup -->
+<!-- Popup -->
 <div class="popup" id="startPopup">
   <h1>🌙 Eid Mubarak</h1>
   <p>Apna naam likh kar Eid Mubarak share karein</p>
   <button onclick="closePopup()">Thanks</button>
 </div>
 
-<!-- 💌 Greeting Card -->
+<!-- Greeting Card -->
 <div class="container">
   <img src="eid.gif" alt="Eid-ul-Adha" />
   <div class="greeting">Eid-ul-Adha Mubarak</div>
@@ -197,10 +195,25 @@
     <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="whatsapp icon"/>
     WhatsApp पर शेयर करें
   </button>
+  </<footer>MADE BY FARMAN KHAN</footer>
 </div>
 
-<!-- ✅ One Ad at Bottom -->
-<div class="ad-box">
+<!-- Horizontal Ad (below greeting) -->
+<div class="ad-horizontal">
+  <script type="text/javascript">
+    atOptions = {
+      'key': '6e387aba1077eab709d2d4e38a5f02e4',
+      'format': 'iframe',
+      'height': 60,
+      'width': 468,
+      'params': {}
+    };
+  </script>
+  <script type="text/javascript" src="//www.highperformanceformat.com/6e387aba1077eab709d2d4e38a5f02e4/invoke.js"></script>
+</div>
+
+<!-- Bottom Banner Ad -->
+<div class="ad-banner-bottom">
   <script type="text/javascript">
     atOptions = {
       'key': '431fe09041d736fee96b9802f252a42a',
@@ -213,6 +226,7 @@
   <script type="text/javascript" src="//www.highperformanceformat.com/431fe09041d736fee96b9802f252a42a/invoke.js"></script>
 </div>
 
+<!-- Music -->
 <audio id="bgMusic" src="song.mp3" muted loop></audio>
 
 <script>
@@ -249,7 +263,7 @@
     audioIcon.textContent = "🔊";
   }
 
-  // Fireworks
+  // Fireworks animation
   const canvas = document.getElementById('fireworksCanvas');
   const ctx = canvas.getContext('2d');
   let w = canvas.width = window.innerWidth;
