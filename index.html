@@ -3,20 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Eid Greeting</title>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <title>Eid-ul-Adha Greeting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: #071a1a;
+      background: url('https://i.imgur.com/9G3gG6H.jpg') no-repeat center center fixed;
+      background-size: cover;
       overflow: hidden;
+      color: white;
     }
 
     canvas {
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
       z-index: 0;
       pointer-events: none;
     }
@@ -25,90 +28,105 @@
       position: relative;
       z-index: 2;
       max-width: 400px;
-      margin: 40px auto;
-      background: rgba(0, 77, 64, 0.95);
-      border: 2px solid #ffd700;
+      margin: 50px auto;
+      background: rgba(0, 0, 0, 0.75);
       border-radius: 20px;
       padding: 20px;
-      box-shadow: 0 0 20px #00ff9f;
-      color: white;
       text-align: center;
+      box-shadow: 0 0 30px #00ffc3;
+      border: 2px solid #ffd700;
     }
 
     img {
       width: 100%;
-      border-radius: 10px;
+      border-radius: 12px;
       border: 3px solid #ffd700;
     }
 
     .greeting {
-      font-family: 'Pacifico', cursive;
-      font-size: 1.8em;
-      margin-top: 15px;
+      font-family: 'Great Vibes', cursive;
+      font-size: 2em;
       color: #ffeb3b;
-      text-shadow: 0 0 10px #fff600;
+      margin-top: 15px;
+      text-shadow: 0 0 10px #ffffff;
     }
 
-    .subtext {
-      font-size: 1em;
-      margin: 10px 0;
+    .shayari {
+      margin: 15px 0;
+      font-size: 1.1em;
+      font-style: italic;
+      color: #ffc107;
     }
 
     input {
       width: 90%;
       padding: 10px;
-      margin: 15px 0;
+      margin-top: 10px;
       border-radius: 10px;
       border: none;
       font-size: 1em;
     }
 
     .button-main {
-      background-color: #ffeb3b;
-      color: #000;
-      font-weight: bold;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 10px;
-      cursor: pointer;
-      width: 90%;
-      transition: 0.3s ease;
-    }
-
-    .button-main:hover {
-      background-color: #fff176;
-    }
-
-    .share-buttons {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .share-buttons button {
-      padding: 10px 15px;
-      border-radius: 50px;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.3s ease;
-    }
-
-    .whatsapp {
       background-color: #25D366;
       color: white;
-    }
-
-    .instagram {
-      background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-      color: white;
-    }
-
-    #wishMessage {
-      margin-top: 15px;
       font-weight: bold;
+      border: none;
+      padding: 14px 20px;
+      font-size: 1em;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px auto 0;
+      width: 80%;
+      gap: 10px;
+    }
+
+    .button-main img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .popup {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .popup h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3em;
+      color: #ffeb3b;
+      margin-bottom: 10px;
+    }
+
+    .popup p {
+      font-size: 1.2em;
+      color: #fff;
+      margin-bottom: 30px;
+    }
+
+    .popup button {
+      background: #ffeb3b;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1.1em;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+      color: #000;
     }
 
     .audio-control {
@@ -116,135 +134,144 @@
       top: 20px;
       right: 20px;
       z-index: 10;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.6);
       border-radius: 50%;
       padding: 15px;
-      font-size: 26px;
+      font-size: 24px;
       cursor: pointer;
-      color: #fff;
+    }
+
+    #wishMessage {
+      margin-top: 15px;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <canvas id="fireworksCanvas"></canvas>
 
-  <div class="audio-control" onclick="toggleMute()" id="audioToggle">🔇</div>
+<!-- Fireworks -->
+<canvas id="fireworksCanvas"></canvas>
 
-  <div class="container">
-    <img src="eid.gif" alt="Eid Greeting" />
-    <div class="greeting">Eid Mubarak</div>
-    <div class="subtext">Wishing you and your family a blessed Eid-ul-Adha!</div>
+<!-- Audio Toggle -->
+<div class="audio-control" onclick="toggleMute()" id="audioToggle">🔇</div>
 
-    <input type="text" id="nameInput" placeholder="Enter your name">
-    <button class="button-main" onclick="generateMessage()">Create & Share Eid Greeting</button>
+<!-- Welcome Popup -->
+<div class="popup" id="startPopup">
+  <h1>🌙 Eid Mubarak</h1>
+  <p>Apna naam likh kar Eid Mubarak share karein</p>
+  <button onclick="closePopup()">Thanks</button>
+</div>
 
-    <div id="wishMessage"></div>
+<!-- Greeting Card -->
+<div class="container">
+  <img src="eid.gif" alt="Eid-ul-Adha" />
+  <div class="greeting">Eid-ul-Adha Mubarak</div>
 
-    <div class="share-buttons" id="shareButtons" style="display:none;">
-      <button class="whatsapp" onclick="shareWhatsApp()">WhatsApp</button>
-      <button class="instagram" onclick="shareInstagram()">Instagram</button>
-    </div>
+  <input type="text" id="nameInput" placeholder="Enter Your Name" />
+  <div class="shayari" id="wishMessage">
+    चाँद से रौशन हो ये त्योहार,<br>
+    आपके जीवन में भर दे खुशियों की बहार,<br>
+    ईद-उल-अज़हा की हार्दिक शुभकामनाएं! 🌙✨
   </div>
 
-  <audio id="bgMusic" src="song.mp3" muted loop></audio>
+  <button class="button-main" onclick="shareOnWhatsApp()">
+    <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="whatsapp icon"/>
+    WhatsApp पर शेयर करें
+  </button>
+  </<footer>MADE BY FARMAN KHAN</footer>
+</div>
+<!-- Music -->
+<audio id="bgMusic" src="song.mp3" muted loop></audio>
 
-  <script>
-    const audio = document.getElementById("bgMusic");
-    const audioIcon = document.getElementById("audioToggle");
+<script>
+  const audio = document.getElementById("bgMusic");
+  const audioIcon = document.getElementById("audioToggle");
 
-    function toggleMute() {
-      audio.muted = !audio.muted;
-      audioIcon.textContent = audio.muted ? "🔇" : "🔊";
-    }
+  function toggleMute() {
+    audio.muted = !audio.muted;
+    audioIcon.textContent = audio.muted ? "🔇" : "🔊";
+    if (!audio.paused) audio.play();
+  }
 
-    function generateMessage() {
-      const name = document.getElementById('nameInput').value.trim();
-      if (!name) {
-        alert("Please enter your name.");
-        return;
-      }
+  function closePopup() {
+    document.getElementById("startPopup").style.display = "none";
+    audio.play();
+    audio.muted = false;
+    audioIcon.textContent = "🔊";
+  }
 
-      const msg = `🌙 Eid Mubarak from ${name}! 🎉 Wishing you happiness and blessings! ${window.location.href}`;
-      document.getElementById('wishMessage').innerText = msg;
-      document.getElementById('shareButtons').style.display = 'flex';
-      window.generatedMessage = msg;
+  function shareOnWhatsApp() {
+    const name = document.getElementById("nameInput").value.trim() || "आपके दोस्त";
+    const message = `🌙 Eid-ul-Adha Mubarak! 🌟\n\nचाँद से रौशन हो ये त्योहार,\nआपके जीवन में भर दे खुशियों की बहार,\nईद-उल-अज़हा की मुबारकबाद!\n\n🎉 शुभकामनाएं: ${name}\n\n🎁 ${window.location.href}`;
 
-      // Start audio playback after user action
-      audio.play().then(() => {
-        audio.muted = false;
-        audioIcon.textContent = "🔊";
-      }).catch(e => {
-        console.warn("Audio autoplay blocked:", e);
+    document.getElementById("wishMessage").innerHTML =
+      `चाँद से रौशन हो ये त्योहार,<br>
+      आपके जीवन में भर दे खुशियों की बहार,<br>
+      ईद-उल-अज़हा की हार्दिक शुभकामनाएं! 🌙✨<br><strong>- ${name}</strong>`;
+
+    const url = "https://api.whatsapp.com/send?text=" + encodeURIComponent(message);
+    window.open(url, '_blank');
+
+    audio.play();
+    audio.muted = false;
+    audioIcon.textContent = "🔊";
+  }
+
+  // Fireworks
+  const canvas = document.getElementById('fireworksCanvas');
+  const ctx = canvas.getContext('2d');
+  let w = canvas.width = window.innerWidth;
+  let h = canvas.height = window.innerHeight;
+  window.addEventListener('resize', () => {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  });
+
+  let particles = [];
+
+  function random(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  function createFirework() {
+    const count = 80;
+    const angle = (Math.PI * 2) / count;
+    const speed = random(2, 5);
+    const x = random(0, w);
+    const y = random(0, h);
+    const color = `hsl(${Math.floor(Math.random() * 360)}, 100%, 50%)`;
+    for (let i = 0; i < count; i++) {
+      const a = angle * i;
+      particles.push({
+        x,
+        y,
+        vx: Math.cos(a) * speed,
+        vy: Math.sin(a) * speed,
+        alpha: 1,
+        color
       });
     }
+  }
 
-    function shareWhatsApp() {
-      if (!window.generatedMessage) return;
-      const url = "https://api.whatsapp.com/send?text=" + encodeURIComponent(window.generatedMessage);
-      window.open(url, '_blank');
-    }
-
-    function shareInstagram() {
-      if (!window.generatedMessage) return;
-      navigator.clipboard.writeText(window.generatedMessage).then(() => {
-        alert("Message copied! Now open Instagram and paste it.");
-      });
-    }
-
-    // Fireworks animation
-    const canvas = document.getElementById('fireworksCanvas');
-    const ctx = canvas.getContext('2d');
-    let w = canvas.width = window.innerWidth;
-    let h = canvas.height = window.innerHeight;
-    window.addEventListener('resize', () => {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
+  function animate() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
+    ctx.fillRect(0, 0, w, h);
+    particles.forEach((p, i) => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.alpha -= 0.01;
+      if (p.alpha <= 0) particles.splice(i, 1);
+      ctx.fillStyle = p.color.replace('hsl', 'hsla').replace(')', `,${p.alpha})`);
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+      ctx.fill();
     });
+    requestAnimationFrame(animate);
+  }
 
-    let particles = [];
+  setInterval(createFirework, 1200);
+  animate();
+</script>
 
-    function random(min, max) {
-      return Math.random() * (max - min) + min;
-    }
-
-    function createFirework() {
-      const count = 100;
-      const angle = (Math.PI * 2) / count;
-      const speed = random(2, 5);
-      const x = random(0, w);
-      const y = random(0, h / 2);
-      const color = `hsl(${Math.floor(Math.random() * 360)}, 100%, 50%)`;
-      for (let i = 0; i < count; i++) {
-        const a = angle * i;
-        particles.push({
-          x,
-          y,
-          vx: Math.cos(a) * speed,
-          vy: Math.sin(a) * speed,
-          alpha: 1,
-          color
-        });
-      }
-    }
-
-    function animate() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
-      ctx.fillRect(0, 0, w, h);
-      particles.forEach((p, i) => {
-        p.x += p.vx;
-        p.y += p.vy;
-        p.alpha -= 0.01;
-        if (p.alpha <= 0) particles.splice(i, 1);
-        ctx.fillStyle = p.color.replace('hsl', 'hsla').replace(')', `,${p.alpha})`);
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
-        ctx.fill();
-      });
-      requestAnimationFrame(animate);
-    }
-
-    setInterval(createFirework, 1500);
-    animate();
-  </script>
 </body>
 </html>
